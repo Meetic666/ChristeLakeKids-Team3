@@ -41,6 +41,11 @@ public class CameraMovement : MonoBehaviour
 
         m_HorizontalDecelerationEnabled = false;
         m_VerticalDecelerationEnabled = false;
+
+        Vector3 newPosition = transform.position;
+        newPosition.x = m_TargetObject.transform.position.x;
+        newPosition.y = m_TargetObject.transform.position.y;
+        transform.position = newPosition;
     }
 
     // Update is called once per frame
