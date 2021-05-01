@@ -5,6 +5,8 @@ public class AudioInterface : MonoBehaviour
 {
     public StudioEventEmitter m_BGM;
     public StudioEventEmitter m_Splash;
+    public StudioEventEmitter m_Crunch;
+    public StudioEventEmitter m_Water;
 
     public void SetBGMHi()
     {
@@ -24,8 +26,18 @@ public class AudioInterface : MonoBehaviour
         }
     }
 
+    public void SetWaterSpeed(System.Single speed)
+    {
+        m_Water.SetParameter("Speed", speed);
+    }
+
     public void Splash()
     {
         m_Splash.Play();
+    }
+
+    public void Crunch()
+    {
+        m_Crunch.Play();
     }
 }
