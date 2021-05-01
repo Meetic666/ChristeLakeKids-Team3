@@ -107,6 +107,11 @@ public class PlayerController : MonoBehaviour {
     bool frontRight = false;
     bool backRight = true;
 
+    [SerializeField]
+    float frontPower = 2;
+    [SerializeField]
+    float backPower = 1.5f;
+
     Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -125,7 +130,7 @@ public class PlayerController : MonoBehaviour {
             }
             else {
 
-                rb.AddForceAtPosition(transform.up * Time.deltaTime * 40, paddles[1].transform.position, ForceMode2D.Impulse);
+                rb.AddForceAtPosition(transform.up * frontPower, paddles[1].transform.position, ForceMode2D.Impulse);
 
             }
         }
@@ -136,7 +141,7 @@ public class PlayerController : MonoBehaviour {
                 paddles[1].SetActive(false);
             }
             else {
-                rb.AddForceAtPosition(transform.up * Time.deltaTime * 40, paddles[0].transform.position, ForceMode2D.Impulse);
+                rb.AddForceAtPosition(transform.up * frontPower, paddles[0].transform.position, ForceMode2D.Impulse);
             }
         }
 
@@ -150,7 +155,7 @@ public class PlayerController : MonoBehaviour {
             else {
 
                 // magnitude = 0
-                rb.AddForceAtPosition(transform.up * Time.deltaTime * 30, paddles[3].transform.position, ForceMode2D.Impulse);
+                rb.AddForceAtPosition(transform.up * backPower, paddles[3].transform.position, ForceMode2D.Impulse);
 
 
             }
@@ -162,7 +167,7 @@ public class PlayerController : MonoBehaviour {
                 paddles[3].SetActive(false);
             }
             else {
-                rb.AddForceAtPosition(transform.up * Time.deltaTime * 30, paddles[2].transform.position, ForceMode2D.Impulse);
+                rb.AddForceAtPosition(transform.up * backPower, paddles[2].transform.position, ForceMode2D.Impulse);
             }
         }
 
