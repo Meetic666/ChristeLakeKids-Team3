@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="EncodableAsset" id="{5729a85b-b94d-49f3-9360-76b74d53e534}">
+		<property name="assetPath">
+			<value>Crunch/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f89dca63-9b77-4390-addb-16e03a3c9035}</destination>
+		</relationship>
+	</object>
+</objects>
