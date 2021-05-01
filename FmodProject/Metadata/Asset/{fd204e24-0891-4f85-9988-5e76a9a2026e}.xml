@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="EncodableAsset" id="{fd204e24-0891-4f85-9988-5e76a9a2026e}">
+		<property name="assetPath">
+			<value>Splash/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f89dca63-9b77-4390-addb-16e03a3c9035}</destination>
+		</relationship>
+	</object>
+</objects>
