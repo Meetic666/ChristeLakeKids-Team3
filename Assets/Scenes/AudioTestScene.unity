@@ -252,6 +252,11 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
+  hasTriggered: 0
+  isQuitting: 0
+  isOneshot: 0
+  cachedParams: []
+  <IsActive>k__BackingField: 0
 --- !u!1 &509076269
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,6 +669,7 @@ MonoBehaviour:
   - Master.strings
   CollisionTag: 
   PreloadSamples: 1
+  isQuitting: 0
 --- !u!4 &1477889095
 Transform:
   m_ObjectHideFlags: 0
@@ -996,6 +1002,11 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
+  hasTriggered: 0
+  isQuitting: 0
+  isOneshot: 0
+  cachedParams: []
+  <IsActive>k__BackingField: 0
 --- !u!1 &1960174449
 GameObject:
   m_ObjectHideFlags: 0
