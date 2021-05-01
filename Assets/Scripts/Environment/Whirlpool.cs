@@ -7,6 +7,9 @@ public class Whirlpool : EnvironmentZone
     public float m_MinCurrentForce;
     public float m_MaxCurrentForce;
 
+    public float m_MinTorque;
+    public float m_MaxTorque;
+
     float m_Radius;
 
     protected override void DoStart()
@@ -25,6 +28,9 @@ public class Whirlpool : EnvironmentZone
             Vector3 currentDirection = -deltaPosition.normalized;
 
             affectedObject.AddForce(currentDirection * currentForce * Time.deltaTime);
+
+            float currentTorque = Mathf.Lerp(m_MaxTorque, m_MinTorque, distance / m_Radius);
+            affectedObject.AddTorque(currentTorque * Time.deltaTime);
         }
     }
 }
