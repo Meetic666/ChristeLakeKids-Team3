@@ -16,11 +16,14 @@
 			<value>2</value>
 		</property>
 		<property name="maximum">
-			<value>2</value>
+			<value>5</value>
 		</property>
 		<property name="enumerationLabels">
-			<value>Menu</value>
-			<value>GamePlay</value>
+			<value>Idle</value>
+			<value>Lo</value>
+			<value>Ready</value>
+			<value>Set</value>
+			<value>Race</value>
 		</property>
 		<property name="isGlobal">
 			<value>true</value>

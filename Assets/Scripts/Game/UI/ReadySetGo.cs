@@ -64,6 +64,16 @@ public class ReadySetGo : MonoBehaviour, EventListener
 			m_TextComponent.color = m_MessageData[index].m_Color;
 			m_RectTransform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
+			if (index == 0 && EventManager.Instance)
+            {
+				EventManager.Instance.PostEvent(new GameEventGetReady());
+			}
+
+			if (index == 1 && EventManager.Instance)
+			{
+				EventManager.Instance.PostEvent(new GameEventGetSet());
+			}
+
 			if (index == m_MessageData.Length - 1
 				&& EventManager.Instance)
 			{
