@@ -69,7 +69,12 @@ public class TimeCountUp : MonoBehaviour, EventListener
             {
 				PickupCollectedEventData eventData = (PickupCollectedEventData)gameEvent.GetEventData();
 				m_TimeBonus += eventData.m_TimeBonus;
-            }
+
+				if (GameController.Instance)
+				{
+					GameController.Instance.ScorePoints(100);
+				}
+			}
 			break;
 		}
 	}
