@@ -11,6 +11,7 @@ public class AudioEventHandler : MonoBehaviour, EventListener
         EventManager.Instance.RegisterListener(EventType.e_RaceFinished, this);
         EventManager.Instance.RegisterListener(EventType.e_RaceStarted, this);
         EventManager.Instance.RegisterListener(EventType.e_Paddled, this);
+        EventManager.Instance.RegisterListener(EventType.e_PickupCollected, this);
     }
 
     public void OnEventReceived(GameEvent gameEvent)

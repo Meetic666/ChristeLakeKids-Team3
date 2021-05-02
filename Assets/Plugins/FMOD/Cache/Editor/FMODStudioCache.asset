@@ -60,7 +60,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 909330730369955406}
+  - {fileID: 1090247601851763761}
   MinDistance: 0
   MaxDistance: 0
   Length: 4500
@@ -77,6 +77,26 @@ MonoBehaviour:
   m_Name: parameter:/Water/Speed
   m_EditorClassIdentifier: 
   Name: Speed
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
+--- !u!114 &-6637977650968621494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BGM1/HasPlayedIntro
+  m_EditorClassIdentifier: 
+  Name: HasPlayedIntro
   Min: 0
   Max: 1
   Default: 0
@@ -282,10 +302,33 @@ MonoBehaviour:
   Path: FmodProject/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637555542430456342
+  lastModified: 637555558574574016
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-1290821289964500732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Coin
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Coin
+  guid: afa6e536bf0483459842f01be2cfadc3
+  Banks:
+  - {fileID: -2690130357889209057}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 400
 --- !u!114 &-635114100883559775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,15 +370,35 @@ MonoBehaviour:
   - {fileID: -7397898140798737438}
   - {fileID: 3756889941703390678}
   - {fileID: 4956100386702164617}
-  - {fileID: -6434672875997283643}
+  - {fileID: -1290821289964500732}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2690130357889209057}
   StringsBanks:
   - {fileID: 7344289925588040948}
-  stringsBankWriteTime: 637555542430466264
+  stringsBankWriteTime: 637555558574553816
   cacheVersion: 6
 --- !u!114 &909330730369955406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Water/Speed
+  m_EditorClassIdentifier: 
+  Name: Speed
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
+--- !u!114 &1090247601851763761
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -544,7 +607,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 2019509404944910964}
+  - {fileID: -6637977650968621494}
   MinDistance: 0
   MaxDistance: 0
   Length: 55315
@@ -563,7 +626,7 @@ MonoBehaviour:
   Path: FmodProject/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637555542430466264
+  lastModified: 637555558574553816
   LoadResult: 0
   FileSizes:
   - Name: Desktop
