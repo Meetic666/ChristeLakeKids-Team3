@@ -60,6 +60,14 @@ public class GameEventPickupCollected : GameEvent
 
 }
 
+public class GameEventPaddled : GameEvent
+{
+	public GameEventPaddled()
+	{
+		m_EventType = EventType.e_Paddled;
+	}
+}
+
 public class GameEventObstacleCollided : GameEvent
 {
 	public GameEventObstacleCollided()
