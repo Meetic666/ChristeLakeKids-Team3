@@ -19,6 +19,11 @@ public class Whirlpool : EnvironmentZone
 
     protected override void DoUpdate()
     {
+        transform.Rotate(0.0f, 0.0f, m_MaxTorque * Time.deltaTime);
+    }
+
+    protected override void DoUpdateObjectsAffected()
+    {
         foreach (Rigidbody2D affectedObject in m_ObjectsAffected)
         {
             Vector3 deltaPosition = affectedObject.transform.position - transform.position;

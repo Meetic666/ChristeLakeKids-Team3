@@ -12,7 +12,7 @@ public class LinearCurrent : EnvironmentZone
         m_CurrentDirection.Normalize();
     }
 
-    protected override void DoUpdate()
+    protected override void DoUpdateObjectsAffected()
     {
         foreach (Rigidbody2D affectedObject in m_ObjectsAffected)
         {
