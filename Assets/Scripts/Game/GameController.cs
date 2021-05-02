@@ -8,15 +8,16 @@ public class GameController : SingletonBehaviour<GameController>, EventListener
 	//-------------------------------------------------------------------------
 	// Types
 
-	public enum CharacterAnimal
+	[System.Serializable]
+	public struct CharacterSpriteSet
 	{
-		NotSelected,
-		Axolotl,
-		Cheetah,
-		Panda,
-		Raccoon,
-		Seal
-	};
+		public Sprite m_LeftNeutral;
+		public Sprite m_LeftForward;
+		public Sprite m_LeftBack;
+		public Sprite m_RightNeutral;
+		public Sprite m_RightForward;
+		public Sprite m_RightBack;
+	}
 
 	//-------------------------------------------------------------------------
 	// Data
@@ -30,6 +31,8 @@ public class GameController : SingletonBehaviour<GameController>, EventListener
 	string m_NextScene;
 
 	CharacterAnimal m_CharacterAnimal;
+
+	public CharacterSpriteSet[] m_SpriteSet;
 
 	//-------------------------------------------------------------------------
 	// Interface
@@ -86,6 +89,40 @@ public class GameController : SingletonBehaviour<GameController>, EventListener
 			EventManager.Instance.PostEvent(new GameEventStartFadeOut());
 			m_NextScene = nextScene;
 		}
+	}
+
+	public Sprite GetCharacterSprite(CharacterAnimal animal,
+		SideOfCanoe sideOfCanoe, PaddleFrame paddleFrame)
+	{
+		int i = (int)animal;
+		if (i < 0 || i > m_SpriteSet.Length)
+		{
+			return null;
+		}
+
+		switch (sideOfCanoe)
+		{
+			case SideOfCanoe.Left:
+			switch(paddleFrame)
+			{
+				case PaddleFrame.Neutral:	return m_SpriteSet[i].m_LeftNeutral;
+				case PaddleFrame.Forward:	return m_SpriteSet[i].m_LeftForward;
+				case PaddleFrame.Back:		return m_SpriteSet[i].m_LeftBack;
+			}
+			break;
+
+			case SideOfCanoe.Right:
+			switch(paddleFrame)
+			{
+				case PaddleFrame.Neutral:	return m_SpriteSet[i].m_RightNeutral;
+				case PaddleFrame.Forward:	return m_SpriteSet[i].m_RightForward;
+				case PaddleFrame.Back:		return m_SpriteSet[i].m_RightBack;
+			}
+			break;
+		}
+		
+		// Not found
+		return null;
 	}
 
 	//-------------------------------------------------------------------------
