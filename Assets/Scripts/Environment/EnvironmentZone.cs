@@ -17,9 +17,11 @@ public class EnvironmentZone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        DoUpdate();
+
         if(m_ObjectsAffected.Count > 0)
         {
-            DoUpdate();
+            DoUpdateObjectsAffected();
         }
     }
 
@@ -45,6 +47,11 @@ public class EnvironmentZone : MonoBehaviour
     }
 
     protected virtual void DoUpdate()
+    {
+
+    }
+
+    protected virtual void DoUpdateObjectsAffected()
     {
 
     }

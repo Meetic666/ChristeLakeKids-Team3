@@ -9,5 +9,7 @@ public enum EventType
 
     e_StartFadeOut,
     e_FadeOutComplete,
-    e_FadeInComplete
+    e_FadeInComplete,
+
+    e_ObstacleCollided
 }
