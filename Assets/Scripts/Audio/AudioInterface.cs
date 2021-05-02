@@ -7,6 +7,7 @@ public class AudioInterface : MonoBehaviour
     public StudioEventEmitter m_Splash;
     public StudioEventEmitter m_Crunch;
     public StudioEventEmitter m_Water;
+    public StudioEventEmitter m_Click;
 
     public void SetBGMHi()
     {
@@ -39,5 +40,10 @@ public class AudioInterface : MonoBehaviour
     public void Crunch()
     {
         m_Crunch.Play();
+    }
+
+    public void Click()
+    {
+        m_Click.Play();
     }
 }
