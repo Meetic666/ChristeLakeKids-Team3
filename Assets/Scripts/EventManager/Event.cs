@@ -1,18 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class Event : MonoBehaviour
+public class GameEvent
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    protected EventType m_EventType;
+    protected EventData m_EventData;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public EventType GetEventType() { return m_EventType; }
+    public EventData GetEventData() { return m_EventData; }
 }
