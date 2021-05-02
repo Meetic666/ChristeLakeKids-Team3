@@ -1,5 +1,8 @@
 using UnityEngine;
 using FMODUnity;
+using System;
+using UnityEngine.Events;
+using System.Runtime.InteropServices;
 
 public class AudioInterface : MonoBehaviour
 {
@@ -8,6 +11,33 @@ public class AudioInterface : MonoBehaviour
     public StudioEventEmitter m_Crunch;
     public StudioEventEmitter m_Water;
     public StudioEventEmitter m_Click;
+
+    public UnityEvent OnBeat;
+
+    private FMOD.Studio.EVENT_CALLBACK beatCallback;
+
+    private static AudioInterface callbackInstance;
+
+    public void OnEnable()
+    {
+        beatCallback = new FMOD.Studio.EVENT_CALLBACK(BeatEventCallback);
+        callbackInstance = this;
+        m_BGM.EventInstance.setCallback(beatCallback, FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT);
+    }
+
+    [AOT.MonoPInvokeCallback(typeof(FMOD.Studio.EVENT_CALLBACK))]
+    static FMOD.RESULT BeatEventCallback(FMOD.Studio.EVENT_CALLBACK_TYPE type, IntPtr instancePtr, IntPtr parameterPtr)
+    {
+        FMOD.Studio.TIMELINE_BEAT_PROPERTIES parameter = (FMOD.Studio.TIMELINE_BEAT_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_BEAT_PROPERTIES));
+
+        if (parameter.beat == 1)
+        {
+            callbackInstance.OnBeat.Invoke();
+        }
+
+        Debug.Log(parameter.beat);
+        return FMOD.RESULT.OK;
+    }
 
     public void SetBGMHi()
     {

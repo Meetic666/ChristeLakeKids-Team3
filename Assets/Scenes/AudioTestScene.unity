@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 69877047}
   - component: {fileID: 69877049}
   - component: {fileID: 69877048}
+  - component: {fileID: 69877050}
+  - component: {fileID: 69877051}
   m_Layer: 0
   m_Name: BG
   m_TagString: Untagged
@@ -198,6 +200,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69877046}
   m_CullTransparentMesh: 1
+--- !u!111 &69877050
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69877046}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 80a3f41693c74fa4ab83a1d33ac522e7, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 80a3f41693c74fa4ab83a1d33ac522e7, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &69877051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69877046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13f25401037a9334db446dd21ba81197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_animation: {fileID: 69877050}
 --- !u!1 &245837735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1260,6 +1291,21 @@ MonoBehaviour:
   m_Crunch: {fileID: 1492637713}
   m_Water: {fileID: 832694539}
   m_Click: {fileID: 1668196154}
+  OnBeat:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 69877051}
+        m_TargetAssemblyTypeName: AudioBeatTest, Assembly-CSharp
+        m_MethodName: OnBeat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1492637711
 GameObject:
   m_ObjectHideFlags: 0
