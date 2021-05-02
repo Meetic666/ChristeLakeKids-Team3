@@ -19,16 +19,24 @@ public class BeatTracker : MonoBehaviour, EventListener
 	private GameObject m_LastBeatPulse;
 
 	private bool m_BeatActive;
+	private bool m_BeatSynced;
 
     // Start is called before the first frame update
     void Start()
     {
 		m_BeatActive = false; // wait for race to start
+		m_BeatSynced = false; // need to capture a beat from the song
 
 		if (EventManager.Instance)
 		{
 			EventManager.Instance.RegisterListener(EventType.e_RaceStarted, this);
 			EventManager.Instance.RegisterListener(EventType.e_RaceFinished, this);
+		}
+
+		AudioInterface audioInterface = GameObject.FindObjectOfType<AudioInterface>();
+		if (audioInterface)
+		{
+			audioInterface.OnBeat.AddListener(SynchBeat);
 		}
 	}
 
@@ -59,23 +67,39 @@ public class BeatTracker : MonoBehaviour, EventListener
 		}
 	}
 
+	public void SynchBeat()
+	{
+		if (!m_BeatSynced)
+		{
+			Debug.Log("Synced to beat");
+			m_BeatSynced = true;
+			m_StartTime = Time.time;
+			m_LastBeat = Time.time;
+			m_NextBeat = Time.time;
+		}
+	}
+
     // Update is called once per frame
     void Update()
     {
-		if (m_BeatActive && Time.time >= m_NextBeat)
+		Debug.Log("m_BeatSynced = " + m_BeatSynced.ToString());
+		
+		Debug.Log("Time.time = " + Time.time.ToString() + " / NextBeat: " + m_NextBeat.ToString());
+		if (m_BeatSynced && Time.time >= m_NextBeat)
 		{
+			Debug.Log("Beat arrived");
 			m_LastBeat = m_NextBeat;
 			m_NextBeat += m_BeatInterval;
-			MakePulse(m_NextBeat, m_BeatColor);
+			if (m_BeatActive)
+			{
+				MakePulse(m_NextBeat, m_BeatColor);
+			}
 		}
 	}
 
 	void StartTheBeat()
 	{
 		m_BeatActive = true;
-        m_StartTime = Time.time;
-		m_LastBeat = Time.time;
-		m_NextBeat = Time.time;
 	}
 
 	void MakePulse(float beatTime, Color pulseColor)
@@ -99,27 +123,64 @@ public class BeatTracker : MonoBehaviour, EventListener
 		pulseComponent.m_DropHeight = m_DropHeight;
 	}
 
-	float TimeSinceLastBeat()
+	CirclePulse FindClosestPulse()
 	{
-		return Mathf.Max(Time.time - m_LastBeat, 0.0f);
-	}
+		// Find all existing pulse objects
+		CirclePulse[] pulses = GameObject.FindObjectsOfType<CirclePulse>();
 
-	float TimeUntilNextBeat()
-	{
-		return Mathf.Max(m_NextBeat - Time.time, 0.0f);
+		// Search for the closest one to the current moment
+		float bestDifference = 100000.0f; // sure
+		CirclePulse closestPulse = null;
+		foreach (CirclePulse pulse in pulses)
+		{
+			float difference = Mathf.Abs(pulse.m_BeatTime - Time.time);
+			if (difference < bestDifference)
+			{
+				bestDifference = difference;
+				closestPulse = pulse;
+			}
+		}
+		
+		return closestPulse;
 	}
-
+	
 	// Gets how far off the current moment is from the nearest beat.
 	float CheckError()
 	{
-		return Mathf.Min(TimeSinceLastBeat(), TimeUntilNextBeat());
+		CirclePulse pulse = FindClosestPulse();
+		if (pulse)
+		{
+			return Mathf.Abs(Time.time - pulse.m_BeatTime);
+		}
+		else
+		{
+			return m_BeatInterval * 0.5f;
+		}
 	}
 
 	// Returns the amount of error as a percentage of a beat.
 	// Result will be in the range from 0 to 0.5.
 	// 0 is a perfect hit, 0.5 is exactly halfway between beats.
-	float CheckErrorPercent()
+	public float CheckErrorPercent()
 	{
 		return CheckError()/m_BeatInterval;
+	}
+	
+	public void OnHit()
+	{
+		CirclePulse pulse = FindClosestPulse();
+//		if (pulse.m_Color == m_BeatColor)
+//		{
+		pulse.SetColor(m_HitColor);
+//		}
+	}
+
+	public void OnMiss()
+	{
+		CirclePulse pulse = FindClosestPulse();
+	//	if (pulse.m_Color == m_BeatColor)
+	//	{
+		pulse.SetColor(m_MissColor);
+	//	}
 	}
 }

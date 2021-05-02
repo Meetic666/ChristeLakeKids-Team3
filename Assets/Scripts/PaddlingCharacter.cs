@@ -27,16 +27,17 @@ public enum PaddleFrame
 
 public class PaddlingCharacter : MonoBehaviour
 {
-	public float m_FrameTimeForward = 0.5f;
+	public float m_FrameTimeForward = 0.4f;
 	public float m_FrameTimeBack = 0.5f;
-	public float m_FrameTimeNeutral = 0.5f;
+	public float m_FrameTimeNeutral = 0.1f;
+
+	public CharacterAnimal m_CharacterAnimal = CharacterAnimal.Axolotl;
 
 	public delegate void OnPaddlePushBackDelegate();
 	public OnPaddlePushBackDelegate m_OnPaddlePushBack;
  
 	private SideOfCanoe m_SideOfCanoe = SideOfCanoe.Left;
 	private PaddleFrame m_PaddleFrame;
-	private CharacterAnimal m_CharacterAnimal = CharacterAnimal.Axolotl;
 	private float m_FrameStart;
 
 	private SpriteRenderer m_SpriteRenderer;

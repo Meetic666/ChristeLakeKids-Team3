@@ -54,3 +54,27 @@ MonoBehaviour:
     m_RightNeutral: {fileID: 21300000, guid: c5ba94a8c76fd394885f2e767a4bb3d8, type: 3}
     m_RightForward: {fileID: 21300000, guid: f0d8c498a2523a34d8ddb41ce6e477a8, type: 3}
     m_RightBack: {fileID: 21300000, guid: a981d7c0f996fd648833b8c8f63fea16, type: 3}
+  - m_LeftNeutral: {fileID: 21300000, guid: db296974c23e69b47b385b6690cb0613, type: 3}
+    m_LeftForward: {fileID: 21300000, guid: c85b5797be35b974b8d9ae1cdaef96ef, type: 3}
+    m_LeftBack: {fileID: 21300000, guid: 39ce1d90860e49c4bbd2d93ef16077c4, type: 3}
+    m_RightNeutral: {fileID: 21300000, guid: 97711815b3e018944a865249593f4604, type: 3}
+    m_RightForward: {fileID: 21300000, guid: 315c801d5982e5a41ab2989683c1641e, type: 3}
+    m_RightBack: {fileID: 21300000, guid: b7ad00dd3601f614585c0722eca34343, type: 3}
+  - m_LeftNeutral: {fileID: 21300000, guid: a0df4ad928bade14ea68a4f72803fe3e, type: 3}
+    m_LeftForward: {fileID: 21300000, guid: f61bd8a4ff60b1741a30b9f33682077f, type: 3}
+    m_LeftBack: {fileID: 21300000, guid: 014c5e17668247f4990daf35b67b73d2, type: 3}
+    m_RightNeutral: {fileID: 21300000, guid: 0a591e2d1139d3b4f8adf5b2faf2bc2b, type: 3}
+    m_RightForward: {fileID: 21300000, guid: 73dccc729cf77cd4b9f5802f2ddef969, type: 3}
+    m_RightBack: {fileID: 21300000, guid: 382ce32a645366549b1255676e20d309, type: 3}
+  - m_LeftNeutral: {fileID: 21300000, guid: 1cd9b2c1e543d614388da6595dd44fdf, type: 3}
+    m_LeftForward: {fileID: 21300000, guid: 44f1f2244b5f4994b81f751201a405dc, type: 3}
+    m_LeftBack: {fileID: 21300000, guid: 7809a4b20a1b97d47aa9b3c27b2098eb, type: 3}
+    m_RightNeutral: {fileID: 21300000, guid: a8987fcbe5e8373439530835d2468556, type: 3}
+    m_RightForward: {fileID: 21300000, guid: 9da7f03ada710bc459a7d10c06243b08, type: 3}
+    m_RightBack: {fileID: 21300000, guid: 3ab2adc25ab3ed44086afb428411e418, type: 3}
+  - m_LeftNeutral: {fileID: 21300000, guid: 5e2047accb9dab144a8d39ba2efcef34, type: 3}
+    m_LeftForward: {fileID: 21300000, guid: 022a71c92ae965b449a3f275e6ee7fe0, type: 3}
+    m_LeftBack: {fileID: 21300000, guid: c281bee7ea0d78541a8737444a04b7ac, type: 3}
+    m_RightNeutral: {fileID: 21300000, guid: aff1946f119e412419dd386be211d3f1, type: 3}
+    m_RightForward: {fileID: 21300000, guid: 0b8ad1cdcad7d634881c48ec7786a697, type: 3}
+    m_RightBack: {fileID: 21300000, guid: 877cc5bc5e6fe344a8ac65a6be06fef4, type: 3}

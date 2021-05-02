@@ -109,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4779012006932180194}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.004, y: -0.101, z: -0.6005378}
+  m_LocalPosition: {x: -0.025, y: -0.043, z: -0.6005378}
   m_LocalScale: {x: 0.06702334, y: 0.06702334, z: 0.20107}
   m_Children: []
   m_Father: {fileID: 8756797691583537611}
@@ -197,6 +197,7 @@ MonoBehaviour:
   m_FrameTimeForward: 0.4
   m_FrameTimeBack: 0.5
   m_FrameTimeNeutral: 0.1
+  m_CharacterAnimal: 3
 --- !u!1 &6713002047158047439
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6713002047158047439}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0050001163, y: 0.31100005, z: -0.6005378}
+  m_LocalPosition: {x: -0.019, y: 0.363, z: -0.6005378}
   m_LocalScale: {x: 0.06702334, y: 0.06702334, z: 0.20107}
   m_Children: []
   m_Father: {fileID: 8756797691583537611}
@@ -312,6 +313,7 @@ MonoBehaviour:
   m_FrameTimeForward: 0.4
   m_FrameTimeBack: 0.5
   m_FrameTimeNeutral: 0.1
+  m_CharacterAnimal: 2
 --- !u!1 &8756797690028882606
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,6 +787,8 @@ MonoBehaviour:
   backPaddler: {fileID: 1417904281550753512}
   frontPower: 1
   backPower: 0.75
+  onBeatPowerFactor: 1.5
+  offBeatPowerFactor: 0.5
 --- !u!50 &8756797691583537614
 Rigidbody2D:
   serializedVersion: 4
