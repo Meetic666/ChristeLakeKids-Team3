@@ -31,6 +31,9 @@ public class PaddlingCharacter : MonoBehaviour
 	public float m_FrameTimeBack = 0.5f;
 	public float m_FrameTimeNeutral = 0.5f;
 
+	public delegate void OnPaddlePushBackDelegate();
+	public OnPaddlePushBackDelegate m_OnPaddlePushBack;
+ 
 	private SideOfCanoe m_SideOfCanoe = SideOfCanoe.Left;
 	private PaddleFrame m_PaddleFrame;
 	private CharacterAnimal m_CharacterAnimal = CharacterAnimal.Axolotl;
@@ -57,6 +60,7 @@ public class PaddlingCharacter : MonoBehaviour
 		if (m_PaddleFrame == PaddleFrame.Forward
 			&& Time.time >= m_FrameStart + m_FrameTimeForward)
 		{
+			m_OnPaddlePushBack(); // Invoke delegate
 			SetPaddleFrame(PaddleFrame.Back);
 		}
 		if (m_PaddleFrame == PaddleFrame.Back
@@ -69,22 +73,22 @@ public class PaddlingCharacter : MonoBehaviour
 		{
 			if (ReadyToPaddle())
 			{
-				Debug.Log("Ready to paddle");
 				Paddle();
-			}
-			else
-			{
-				Debug.Log("NOT ready to paddle");
 			}
 		}
     }
 
+	public bool IsOnRight()
+	{
+		return m_SideOfCanoe == SideOfCanoe.Right;
+	}
+
 	public bool ReadyToPaddle()
 	{
-		Debug.Log("m_PaddleFrame = " + m_PaddleFrame.ToString()
-			+ "; Time.time = " + Time.time.ToString()
-			+ "; m_FrameStart + m_FrameTimeNetural = "
-				+ (m_FrameStart + m_FrameTimeNeutral).ToString());
+		//Debug.Log("m_PaddleFrame = " + m_PaddleFrame.ToString()
+		//	+ "; Time.time = " + Time.time.ToString()
+		//	+ "; m_FrameStart + m_FrameTimeNetural = "
+		//		+ (m_FrameStart + m_FrameTimeNeutral).ToString());
 
 		return m_PaddleFrame == PaddleFrame.Neutral
 			&& Time.time >= m_FrameStart + m_FrameTimeNeutral;
@@ -97,8 +101,11 @@ public class PaddlingCharacter : MonoBehaviour
 
 	public void SetSideOfCanoe(SideOfCanoe side)
 	{
-		m_SideOfCanoe = side;
-		UpdateSprite();
+		if (side != m_SideOfCanoe)
+		{
+			m_SideOfCanoe = side;
+			SetPaddleFrame(PaddleFrame.Neutral);
+		}
 	}
 
 	void SetPaddleFrame(PaddleFrame paddleFrame)
