@@ -59,3 +59,12 @@ public class GameEventPickupCollected : GameEvent
 	}
 
 }
+
+public class GameEventObstacleCollided : GameEvent
+{
+	public GameEventObstacleCollided()
+	{
+		m_EventType = EventType.e_ObstacleCollided;
+	}
+
+}
