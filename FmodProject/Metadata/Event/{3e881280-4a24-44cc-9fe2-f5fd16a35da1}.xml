@@ -139,7 +139,7 @@
 	</object>
 	<object class="CommandSound" id="{3fd4275f-4a0c-43c2-8fd9-e12ed13357b8}">
 		<property name="start">
-			<value>3.7894736842105261</value>
+			<value>3.8684210526315788</value>
 		</property>
 		<property name="length">
 			<value>2.5263157894736841</value>
