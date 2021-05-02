@@ -47,3 +47,10 @@ MonoBehaviour:
     useConstant: 1
     constant: 
     variable: {fileID: 0}
+  m_SpriteSet:
+  - m_LeftNeutral: {fileID: 21300000, guid: fd9ad09912e8d1c4b9eb49e326d807cf, type: 3}
+    m_LeftForward: {fileID: 21300000, guid: 2c204c89eccfc8241b7243d801e2a602, type: 3}
+    m_LeftBack: {fileID: 21300000, guid: 5c4991a7ef909f345a20b83b66797518, type: 3}
+    m_RightNeutral: {fileID: 21300000, guid: c5ba94a8c76fd394885f2e767a4bb3d8, type: 3}
+    m_RightForward: {fileID: 21300000, guid: f0d8c498a2523a34d8ddb41ce6e477a8, type: 3}
+    m_RightBack: {fileID: 21300000, guid: a981d7c0f996fd648833b8c8f63fea16, type: 3}
