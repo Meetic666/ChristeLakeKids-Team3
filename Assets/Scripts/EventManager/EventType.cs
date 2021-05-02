@@ -13,5 +13,6 @@ public enum EventType
     e_FadeOutComplete,
     e_FadeInComplete,
 
-    e_ObstacleCollided
+    e_ObstacleCollided,
+    e_SpeedChanged
 }

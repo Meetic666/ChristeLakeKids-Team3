@@ -1,5 +1,25 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8290912722239537482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BGM1/HasPlayedIntro
+  m_EditorClassIdentifier: 
+  Name: HasPlayedIntro
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-8254943690909668632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,7 +100,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -1967819076559822292}
+  - {fileID: 834150696330597440}
   MinDistance: 0
   MaxDistance: 0
   Length: 4500
@@ -362,7 +382,7 @@ MonoBehaviour:
   Path: FmodProject/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637555622351817621
+  lastModified: 637555640836741577
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -456,8 +476,28 @@ MonoBehaviour:
   - {fileID: -2690130357889209057}
   StringsBanks:
   - {fileID: 7344289925588040948}
-  stringsBankWriteTime: 637555622351827547
+  stringsBankWriteTime: 637555558574553816
   cacheVersion: 6
+--- !u!114 &834150696330597440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Water/Speed
+  m_EditorClassIdentifier: 
+  Name: Speed
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &909330730369955406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,14 +723,14 @@ MonoBehaviour:
   guid: 8012883e244acc449fe2f5fd16a35da1
   Banks:
   - {fileID: -2690130357889209057}
-  IsStream: 1
+  IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -4541027793508398127}
+  - {fileID: -8290912722239537482}
   MinDistance: 0
   MaxDistance: 0
-  Length: 77052
+  Length: 107585
 --- !u!114 &7344289925588040948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,7 +746,7 @@ MonoBehaviour:
   Path: FmodProject/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637555622351827547
+  lastModified: 637555558574553816
   LoadResult: 0
   FileSizes:
   - Name: Desktop

@@ -59,7 +59,9 @@ public class AudioInterface : MonoBehaviour
         LoadSound(out m_Water, "event:/Water");        
 
         m_BGM.start();
-        m_Water.start();
+        //m_Water.start();
+
+        SetWaterSpeed(0.0f);
 
         SetupCallback();
     }

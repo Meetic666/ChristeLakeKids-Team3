@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour, EventListener
 
     bool m_RaceStarted = false;
 
+    GameEventSpeedChanged m_SpeedChangedEvent;
+    float m_PreviousSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +37,8 @@ public class PlayerController : MonoBehaviour, EventListener
 
 		frontPaddler.m_OnPaddlePushBack = OnFrontPaddlePushBack;
 		backPaddler.m_OnPaddlePushBack = OnBackPaddlePushBack;
+
+        m_SpeedChangedEvent = new GameEventSpeedChanged();
     }
 
     // Update is called once per frame
@@ -49,6 +54,15 @@ public class PlayerController : MonoBehaviour, EventListener
 			{
 				ProcessBackPaddlerInput();
 			}
+
+            float currentSpeed = rb.velocity.magnitude;
+            if (currentSpeed != m_PreviousSpeed)
+            {
+                m_SpeedChangedEvent.SetSpeed(currentSpeed / 10.0f);
+                EventManager.Instance.PostEvent(m_SpeedChangedEvent);
+
+                m_PreviousSpeed = currentSpeed;
+            }
         }
     }
 

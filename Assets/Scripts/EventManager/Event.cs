@@ -90,5 +90,18 @@ public class GameEventObstacleCollided : GameEvent
 	{
 		m_EventType = EventType.e_ObstacleCollided;
 	}
+}
 
+public class GameEventSpeedChanged : GameEvent
+{
+	public GameEventSpeedChanged()
+	{
+		m_EventType = EventType.e_SpeedChanged;
+		m_EventData = new SpeedChangedEventData();
+	}
+
+	public void SetSpeed(float speed)
+    {
+		((SpeedChangedEventData)m_EventData).m_CurrentSpeed = speed;
+    }
 }

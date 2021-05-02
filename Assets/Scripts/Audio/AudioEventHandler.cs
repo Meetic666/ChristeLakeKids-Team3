@@ -16,6 +16,7 @@ public class AudioEventHandler : MonoBehaviour, EventListener
         EventManager.Instance.RegisterListener(EventType.e_Paddled, this);
         EventManager.Instance.RegisterListener(EventType.e_PickupCollected, this);
         EventManager.Instance.RegisterListener(EventType.e_ObstacleCollided, this);
+        EventManager.Instance.RegisterListener(EventType.e_SpeedChanged, this);
     }
 
     public void OnEventReceived(GameEvent gameEvent)
@@ -44,6 +45,10 @@ public class AudioEventHandler : MonoBehaviour, EventListener
                     break;
                 case EventType.e_ObstacleCollided:
                     audioInterface.Crunch();
+                    break;
+                case EventType.e_SpeedChanged:
+                    SpeedChangedEventData eventData = (SpeedChangedEventData)gameEvent.GetEventData();
+                    audioInterface.SetWaterSpeed(eventData.m_CurrentSpeed);
                     break;
                 default:
                     // DO NOTHING
