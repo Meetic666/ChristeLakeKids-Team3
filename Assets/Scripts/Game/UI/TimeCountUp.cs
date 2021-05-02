@@ -22,7 +22,7 @@ public class TimeCountUp : MonoBehaviour, EventListener
         m_StartTime = Time.time;
         m_TextComponent = gameObject.GetComponent<TextMeshProUGUI>();
 
-		//m_TextComponent.enabled = false; // wait for race start
+		m_TextComponent.enabled = false; // wait for race start
 		m_RaceStarted = true;
 
 		if (EventManager.Instance)

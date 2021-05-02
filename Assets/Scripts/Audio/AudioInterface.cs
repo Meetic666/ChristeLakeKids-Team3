@@ -3,26 +3,72 @@ using FMODUnity;
 using System;
 using UnityEngine.Events;
 using System.Runtime.InteropServices;
+using System.Collections;
 
 public class AudioInterface : MonoBehaviour
 {
-    public StudioEventEmitter m_BGM;
-    public StudioEventEmitter m_Splash;
-    public StudioEventEmitter m_Crunch;
-    public StudioEventEmitter m_Water;
-    public StudioEventEmitter m_Click;
+    public FMOD.Studio.EventInstance m_BGM;
+    public FMOD.Studio.EventInstance m_Water;
 
     public UnityEvent OnBeat;
 
     private FMOD.Studio.EVENT_CALLBACK beatCallback;
-
     private static AudioInterface callbackInstance;
 
-    public void OnEnable()
+    public void Start()
+    {
+        StartCoroutine(LoadSounds());
+    }
+
+    private void SetupCallback()
     {
         beatCallback = new FMOD.Studio.EVENT_CALLBACK(BeatEventCallback);
         callbackInstance = this;
-        m_BGM.EventInstance.setCallback(beatCallback, FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT);
+        Validate(m_BGM.setCallback(beatCallback, FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT));
+    }
+
+    private void Validate(FMOD.RESULT result)
+    {
+        if (result == FMOD.RESULT.OK)
+        {
+            return;
+        }
+
+        Debug.LogError(result.ToString());
+    }
+
+    IEnumerator LoadSounds()
+    {      
+        RuntimeManager.WaitForAllLoads();
+
+        while (!RuntimeManager.HasBanksLoaded || RuntimeManager.AnyBankLoading())
+        {
+            yield return null;
+        }
+
+        LoadSound(out m_BGM, "event:/Music/BGM1");
+        LoadSound(out m_Water, "event:/Water");        
+
+        m_BGM.start();
+        m_Water.start();
+
+        SetupCallback();
+    }
+
+    private void LoadSound(out FMOD.Studio.EventInstance sound, string eventName)
+    {
+        FMOD.Studio.LOADING_STATE loadingState = FMOD.Studio.LOADING_STATE.LOADING;
+        FMOD.Studio.EventDescription eventDescription;
+
+        sound = RuntimeManager.CreateInstance(eventName);
+        Validate(sound.getDescription(out eventDescription));
+        eventDescription.loadSampleData();
+              
+        while (loadingState == FMOD.Studio.LOADING_STATE.LOADING)
+        {
+            RuntimeManager.StudioSystem.update();
+            Validate(eventDescription.getSampleLoadingState(out loadingState));
+        }
     }
 
     [AOT.MonoPInvokeCallback(typeof(FMOD.Studio.EVENT_CALLBACK))]
@@ -35,45 +81,42 @@ public class AudioInterface : MonoBehaviour
             callbackInstance.OnBeat.Invoke();
         }
 
-        Debug.Log(parameter.beat);
         return FMOD.RESULT.OK;
     }
 
     public void SetBGMHi()
     {
-        FMOD.RESULT result = RuntimeManager.StudioSystem.setParameterByName("GameState", 1);
-        if (result != FMOD.RESULT.OK)
-        {
-            Debug.LogError(string.Format(("[FMOD] StudioGlobalParameterTrigger failed to set parameter {0} : result = {1}"), "GameState", result));
-        }
+        Validate(RuntimeManager.StudioSystem.setParameterByName("GameState", 1));
     }
 
     public void SetBGMLo()
     {
-        FMOD.RESULT result = RuntimeManager.StudioSystem.setParameterByName("GameState", 0);
-        if (result != FMOD.RESULT.OK)
-        {
-            Debug.LogError(string.Format(("[FMOD] StudioGlobalParameterTrigger failed to set parameter {0} : result = {1}"), "GameState", result));
-        }
+        Validate(RuntimeManager.StudioSystem.setParameterByName("GameState", 0));
     }
 
     public void SetWaterSpeed(System.Single speed)
     {
-        m_Water.SetParameter("Speed", speed);
+        Validate(m_Water.setParameterByName("Speed", speed));
     }
 
     public void Splash()
     {
-        m_Splash.Play();
+        FMOD.Studio.EventInstance instance;
+        LoadSound(out instance, "event:/SFX/Splash");        
+        Validate(instance.start());
     }
 
     public void Crunch()
     {
-        m_Crunch.Play();
+        FMOD.Studio.EventInstance instance;
+        LoadSound(out instance, "event:/SFX/Crunch");
+        Validate(instance.start());
     }
 
     public void Click()
     {
-        m_Click.Play();
+        FMOD.Studio.EventInstance instance;
+        LoadSound(out instance, "event:/SFX/Click");
+        Validate(instance.start());
     }
 }
