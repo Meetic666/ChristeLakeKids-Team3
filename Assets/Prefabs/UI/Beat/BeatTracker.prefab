@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PulsePrefab: {fileID: 4292995618003366952, guid: 2b1f0389a28c7d84c8675aa24e061997, type: 3}
-  m_BeatInterval: 1.263158
+  m_BeatInterval: 1.263
   m_DropHeight: 50
   m_PulseSize: 100
   m_PulseDuration: 1

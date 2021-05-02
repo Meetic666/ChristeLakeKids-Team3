@@ -69,7 +69,7 @@ public class BeatTracker : MonoBehaviour, EventListener
 
 	public void SynchBeat()
 	{
-		if (!m_BeatSynced)
+		//if (!m_BeatSynced)
 		{
 			Debug.Log("Synced to beat");
 			m_BeatSynced = true;
