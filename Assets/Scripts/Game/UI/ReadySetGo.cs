@@ -59,7 +59,6 @@ public class ReadySetGo : MonoBehaviour, EventListener
 			m_TextComponent.enabled = true;
 			m_MessageIndex = index;
 			m_StartTime = Time.time;
-			Debug.Log("Message:" + m_MessageData[index].m_Message);
 			m_TextComponent.text = m_MessageData[index].m_Message;
 			m_TextComponent.color = m_MessageData[index].m_Color;
 			m_RectTransform.localScale = new Vector3(1.0f, 1.0f, 1.0f);

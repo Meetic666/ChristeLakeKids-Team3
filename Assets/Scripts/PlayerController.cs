@@ -18,9 +18,19 @@ public class PlayerController : MonoBehaviour, EventListener
     [SerializeField]
     float backPower = 1.5f;
 
+    [SerializeField]
+    float onBeatPowerFactor = 1.5f;
+    [SerializeField]
+    float offBeatPowerFactor = 0.5f;
+
+	float tempFrontPower; // when increased by the beat
+	float tempBackPower;
+
     Rigidbody2D rb;
 
     bool m_RaceStarted = false;
+
+	BeatTracker m_BeatTracker;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +44,8 @@ public class PlayerController : MonoBehaviour, EventListener
 
 		frontPaddler.m_OnPaddlePushBack = OnFrontPaddlePushBack;
 		backPaddler.m_OnPaddlePushBack = OnBackPaddlePushBack;
+
+		m_BeatTracker = GameObject.FindObjectOfType<BeatTracker>();
     }
 
     // Update is called once per frame
@@ -52,6 +64,22 @@ public class PlayerController : MonoBehaviour, EventListener
         }
     }
 
+	float GetBeatPower()
+	{
+		if (m_BeatTracker)
+		{
+			float errorPercent = m_BeatTracker.CheckErrorPercent();
+			if (errorPercent < 0.2f)
+			{
+				m_BeatTracker.OnHit();
+
+				return onBeatPowerFactor;
+			}
+		}
+		
+		return offBeatPowerFactor;
+	}
+
 	void ProcessFrontPaddlerInput()
 	{
 		// Front Left
@@ -63,6 +91,7 @@ public class PlayerController : MonoBehaviour, EventListener
             }
             else
             {
+				tempFrontPower = frontPower * GetBeatPower();
 				frontPaddler.Paddle();
             }
         }
@@ -76,6 +105,7 @@ public class PlayerController : MonoBehaviour, EventListener
             }
             else
             {
+				tempFrontPower = frontPower * GetBeatPower();
 				frontPaddler.Paddle();
             }
         }
@@ -92,6 +122,7 @@ public class PlayerController : MonoBehaviour, EventListener
             }
             else
             {
+				tempBackPower = backPower * GetBeatPower();
 				backPaddler.Paddle();
             }
         }
@@ -101,11 +132,10 @@ public class PlayerController : MonoBehaviour, EventListener
             if (!backPaddler.IsOnRight())
             {
 				backPaddler.SetSideOfCanoe(SideOfCanoe.Right);
-                //paddles[2].SetActive(true);
-                //paddles[3].SetActive(false);
             }
             else
             {
+				tempBackPower = backPower * GetBeatPower();
 				backPaddler.Paddle();
 			}
 		}
@@ -121,12 +151,12 @@ public class PlayerController : MonoBehaviour, EventListener
 		
 		if (frontPaddler.IsOnRight())
 		{
-            rb.AddForceAtPosition(transform.up * frontPower,
+            rb.AddForceAtPosition(transform.up * tempFrontPower,
 				paddles[0].transform.position, ForceMode2D.Impulse);
 		}
 		else
 		{
-			rb.AddForceAtPosition(transform.up * frontPower,
+			rb.AddForceAtPosition(transform.up * tempFrontPower,
 				paddles[1].transform.position, ForceMode2D.Impulse);
 		}
 	}
@@ -140,12 +170,12 @@ public class PlayerController : MonoBehaviour, EventListener
 
 		if (backPaddler.IsOnRight())
 		{
-			rb.AddForceAtPosition(transform.up * backPower,
+			rb.AddForceAtPosition(transform.up * tempBackPower,
 				paddles[2].transform.position, ForceMode2D.Impulse);
 		}
 		else
 		{
-			rb.AddForceAtPosition(transform.up * backPower,
+			rb.AddForceAtPosition(transform.up * tempBackPower,
 				paddles[3].transform.position, ForceMode2D.Impulse);
 		}
 	}
