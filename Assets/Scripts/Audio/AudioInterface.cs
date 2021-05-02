@@ -15,6 +15,15 @@ public class AudioInterface : MonoBehaviour
     private FMOD.Studio.EVENT_CALLBACK beatCallback;
     private static AudioInterface callbackInstance;
 
+    enum GameStateParam
+    {
+        Idle = 0,
+        Lo = 1,
+        Ready = 2,
+        Set = 3,
+        Race = 4
+    }
+
     public void Start()
     {
         StartCoroutine(LoadSounds());
@@ -84,14 +93,29 @@ public class AudioInterface : MonoBehaviour
         return FMOD.RESULT.OK;
     }
 
+    public void GetReady()
+    {
+        Validate(RuntimeManager.StudioSystem.setParameterByName("GameState", (float)GameStateParam.Ready));
+    }
+
+    public void GetSet()
+    {
+        Validate(RuntimeManager.StudioSystem.setParameterByName("GameState", (float)GameStateParam.Set));
+    }
+
+    public void Go()
+    {
+        Validate(RuntimeManager.StudioSystem.setParameterByName("GameState", (float)GameStateParam.Race));
+    }
+
     public void SetBGMHi()
     {
-        Validate(RuntimeManager.StudioSystem.setParameterByName("GameState", 1));
+        Validate(RuntimeManager.StudioSystem.setParameterByName("GameState", (float)GameStateParam.Race));
     }
 
     public void SetBGMLo()
     {
-        Validate(RuntimeManager.StudioSystem.setParameterByName("GameState", 0));
+        Validate(RuntimeManager.StudioSystem.setParameterByName("GameState", (float)GameStateParam.Lo));
     }
 
     public void SetWaterSpeed(System.Single speed)

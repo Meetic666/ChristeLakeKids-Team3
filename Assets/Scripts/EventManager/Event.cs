@@ -32,6 +32,22 @@ public class GameEventFadeInComplete : GameEvent
 	}
 }
 
+public class GameEventGetReady : GameEvent
+{
+	public GameEventGetReady()
+	{
+		m_EventType = EventType.e_GetReady;
+	}
+}
+
+public class GameEventGetSet : GameEvent
+{
+	public GameEventGetSet()
+	{
+		m_EventType = EventType.e_GetSet;
+	}
+}
+
 public class GameEventRaceStarted : GameEvent
 {
 	public GameEventRaceStarted()
