@@ -30,7 +30,7 @@ public class Goose : MonoBehaviour
 
         m_Rigidbody = GetComponent<Rigidbody2D>();
 
-        m_ThrustTimer = m_ThrustIntervals;
+        m_ThrustTimer = Random.Range(0.0f, 200.0f * m_ThrustIntervals) / 100.0f;
     }
 
     // Update is called once per frame
