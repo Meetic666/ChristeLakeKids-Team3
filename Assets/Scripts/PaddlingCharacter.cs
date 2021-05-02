@@ -116,7 +116,7 @@ public class PaddlingCharacter : MonoBehaviour
 		UpdateSprite();
 	}
 
-	void SetCharacterAnimal(CharacterAnimal animal)
+	public void SetCharacterAnimal(CharacterAnimal animal)
 	{
 		m_CharacterAnimal = animal;
 		UpdateSprite();
