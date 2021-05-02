@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
+    public int m_TimeBonus = 5;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,12 @@ public class Pickup : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider2D)
     {
+        if(collider2D.GetComponent<PlayerController>() != null)
+        {
+            GameEvent gameEvent = new GameEventPickupCollected(m_TimeBonus);
+            EventManager.Instance.PostEvent(gameEvent);
 
+            gameObject.SetActive(false);
+        }
     }
 }

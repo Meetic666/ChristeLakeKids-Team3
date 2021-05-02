@@ -47,3 +47,15 @@ public class GameEventRaceFinished : GameEvent
 		m_EventType = EventType.e_RaceFinished;
 	}
 }
+
+public class GameEventPickupCollected : GameEvent
+{
+	public GameEventPickupCollected(int timeBonus)
+	{
+		m_EventType = EventType.e_PickupCollected;
+		PickupCollectedEventData eventData = new PickupCollectedEventData();
+		eventData.m_TimeBonus = timeBonus;
+		m_EventData = eventData;
+	}
+
+}

@@ -14,18 +14,23 @@ public class TimeCountUp : MonoBehaviour, EventListener
 	private bool m_RaceStarted;
 	private bool m_RaceFinished;
 
-    // Start is called before the first frame update
-    void Start()
+	private int m_TimeBonus;
+
+	// Start is called before the first frame update
+	void Start()
     {
         m_StartTime = Time.time;
         m_TextComponent = gameObject.GetComponent<TextMeshProUGUI>();
 
-		m_TextComponent.enabled = false; // wait for race start
+		//m_TextComponent.enabled = false; // wait for race start
+		m_RaceStarted = true;
 
 		if (EventManager.Instance)
 		{
 			EventManager.Instance.RegisterListener(EventType.e_RaceStarted, this);
 			EventManager.Instance.RegisterListener(EventType.e_RaceFinished, this);
+
+			EventManager.Instance.RegisterListener(EventType.e_PickupCollected, this);
 		}
     }
 
@@ -60,6 +65,13 @@ public class TimeCountUp : MonoBehaviour, EventListener
 				}
 			}
 			break;
+
+			case EventType.e_PickupCollected:
+            {
+				PickupCollectedEventData eventData = (PickupCollectedEventData)gameEvent.GetEventData();
+				m_TimeBonus += eventData.m_TimeBonus;
+            }
+			break;
 		}
 	}
 
@@ -74,7 +86,7 @@ public class TimeCountUp : MonoBehaviour, EventListener
 
 	public int GetSecondsElapsed()
     {
-        return (int)(Time.time - m_StartTime);
+        return (int)(Time.time - m_StartTime) - m_TimeBonus;
     }
 
     public string GetElapsedTimeString()
