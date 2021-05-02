@@ -60,10 +60,53 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -4963136477377979701}
+  - {fileID: 909330730369955406}
   MinDistance: 0
   MaxDistance: 0
   Length: 4500
+--- !u!114 &-7144669119826377171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Water/Speed
+  m_EditorClassIdentifier: 
+  Name: Speed
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
+--- !u!114 &-6434672875997283643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Coin
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Coin
+  guid: afa6e536bf0483459842f01be2cfadc3
+  Banks:
+  - {fileID: -2690130357889209057}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 400
 --- !u!114 &-6088193682103117396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +282,7 @@ MonoBehaviour:
   Path: FmodProject/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637555390833685460
+  lastModified: 637555542430456342
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -284,13 +327,74 @@ MonoBehaviour:
   - {fileID: -7397898140798737438}
   - {fileID: 3756889941703390678}
   - {fileID: 4956100386702164617}
+  - {fileID: -6434672875997283643}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2690130357889209057}
   StringsBanks:
   - {fileID: 7344289925588040948}
-  stringsBankWriteTime: 637555012873809034
+  stringsBankWriteTime: 637555542430466264
   cacheVersion: 6
+--- !u!114 &909330730369955406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Water/Speed
+  m_EditorClassIdentifier: 
+  Name: Speed
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
+--- !u!114 &1800238842193033243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BGM1/HasPlayedIntro
+  m_EditorClassIdentifier: 
+  Name: HasPlayedIntro
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
+--- !u!114 &2019509404944910964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BGM1/HasPlayedIntro
+  m_EditorClassIdentifier: 
+  Name: HasPlayedIntro
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &3204721429068659996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,7 +544,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -635114100883559775}
+  - {fileID: 2019509404944910964}
   MinDistance: 0
   MaxDistance: 0
   Length: 55315
@@ -459,11 +563,11 @@ MonoBehaviour:
   Path: FmodProject/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637555012873809034
+  lastModified: 637555542430466264
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1206
+    Value: 1240
   Exists: 1
 --- !u!114 &8269477446099502230
 MonoBehaviour:

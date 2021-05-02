@@ -119,4 +119,11 @@ public class AudioInterface : MonoBehaviour
         LoadSound(out instance, "event:/SFX/Click");
         Validate(instance.start());
     }
+
+    public void Coin()
+    {
+        FMOD.Studio.EventInstance instance;
+        LoadSound(out instance, "event:/SFX/Coin");
+        Validate(instance.start());
+    }
 }
