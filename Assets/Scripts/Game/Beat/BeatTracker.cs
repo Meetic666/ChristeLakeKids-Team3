@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BeatTracker : MonoBehaviour
+public class BeatTracker : MonoBehaviour, EventListener
 {
 	public GameObject m_PulsePrefab;
 	public float m_BeatInterval; // seconds
@@ -17,24 +17,65 @@ public class BeatTracker : MonoBehaviour
 	private float m_NextBeat;
 	private float m_LastBeat;
 	private GameObject m_LastBeatPulse;
-	
+
+	private bool m_BeatActive;
+
     // Start is called before the first frame update
     void Start()
     {
-        m_StartTime = Time.time;
-		m_LastBeat = Time.time;
-		m_NextBeat = Time.time;
-    }
+		m_BeatActive = false; // wait for race to start
+
+		if (EventManager.Instance)
+		{
+			EventManager.Instance.RegisterListener(EventType.e_RaceStarted, this);
+			EventManager.Instance.RegisterListener(EventType.e_RaceFinished, this);
+		}
+	}
+
+    void OnDestroy()
+    {
+		if (EventManager.Instance)
+		{
+			EventManager.Instance.UnregisterListener(EventType.e_RaceStarted, this);
+			EventManager.Instance.UnregisterListener(EventType.e_RaceFinished, this);
+		}
+	}
+
+    public void OnEventReceived(GameEvent gameEvent)
+    {
+		switch(gameEvent.GetEventType())
+		{
+			case EventType.e_RaceStarted:
+			{
+				StartTheBeat();
+			}
+			break;
+
+			case EventType.e_RaceFinished:
+			{
+				m_BeatActive = false;
+			}
+			break;
+		}
+	}
 
     // Update is called once per frame
     void Update()
     {
-		if (Time.time >= m_NextBeat)
+		if (m_BeatActive && Time.time >= m_NextBeat)
 		{
 			m_LastBeat = m_NextBeat;
 			m_NextBeat += m_BeatInterval;
 			MakePulse(m_NextBeat, m_BeatColor);
 		}
+	}
+
+	void StartTheBeat()
+	{
+		m_BeatActive = true;
+        m_StartTime = Time.time;
+		m_LastBeat = Time.time;
+		m_NextBeat = Time.time;
 	}
 
 	void MakePulse(float beatTime, Color pulseColor)

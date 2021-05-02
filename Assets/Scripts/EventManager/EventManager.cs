@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventManager : MonoBehaviour
+public class EventManager : SingletonBehaviour<EventManager>
 {
     Dictionary<EventType, List<EventListener>> m_EventListeners = new Dictionary<EventType, List<EventListener>>();
 
@@ -31,6 +31,8 @@ public class EventManager : MonoBehaviour
 
     public void PostEvent(GameEvent gameEvent)
     {
+		Debug.Log("Dispatched event " + gameEvent.GetEventType().ToString());
+
         EventType eventType = gameEvent.GetEventType();
         if(m_EventListeners.ContainsKey(eventType))
         {
