@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
-	<object class="AudioFile" id="{f3b74411-fa12-4616-8708-b1a0ac64b7db}">
+	<object class="AudioFile" id="{ae6ef423-5ce3-4677-b405-347d8e917e67}">
 		<property name="assetPath">
-			<value>Splash/splash_01.wav</value>
+			<value>Splash/splash_07.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
@@ -11,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>0.77777777777777779</value>
+			<value>0.86804988662131521</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{f89dca63-9b77-4390-addb-16e03a3c9035}</destination>
