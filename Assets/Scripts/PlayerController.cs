@@ -48,6 +48,20 @@ public class PlayerController : MonoBehaviour, EventListener
 		frontPaddler.m_OnPaddlePushBack = OnFrontPaddlePushBack;
 		backPaddler.m_OnPaddlePushBack = OnBackPaddlePushBack;
 
+		if (GameController.Instance)
+		{
+			CharacterAnimal frontAnimal = GameController.Instance.GetFrontAnimal();
+			if (frontAnimal != CharacterAnimal.NotSelected)
+			{
+				frontPaddler.SetCharacterAnimal(frontAnimal);
+			}
+			CharacterAnimal backAnimal = GameController.Instance.GetBackAnimal();
+			if (backAnimal != CharacterAnimal.NotSelected)
+			{
+				backPaddler.SetCharacterAnimal(backAnimal);
+			}
+		}
+
         m_SpeedChangedEvent = new GameEventSpeedChanged();
 
 		m_BeatTracker = GameObject.FindObjectOfType<BeatTracker>();

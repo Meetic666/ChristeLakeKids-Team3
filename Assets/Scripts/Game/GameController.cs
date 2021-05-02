@@ -30,7 +30,8 @@ public class GameController : SingletonBehaviour<GameController>, EventListener
 
 	string m_NextScene;
 
-	CharacterAnimal m_CharacterAnimal;
+	CharacterAnimal m_FrontAnimal;
+	CharacterAnimal m_BackAnimal;
 
 	public CharacterSpriteSet[] m_SpriteSet;
 
@@ -41,12 +42,36 @@ public class GameController : SingletonBehaviour<GameController>, EventListener
 	{
 		m_PlayerScore = 0;
 		m_PlayerTime = 0;
-		m_CharacterAnimal = CharacterAnimal.NotSelected;
+		m_FrontAnimal = CharacterAnimal.NotSelected;
+		m_BackAnimal = CharacterAnimal.NotSelected;
 	}
 
-	public void SetCharacterAnimal(CharacterAnimal animal)
+	public bool CanSelectCharacter()
 	{
-		m_CharacterAnimal = animal;
+		return m_BackAnimal == CharacterAnimal.NotSelected;
+	}
+
+	public void SelectCharacter(CharacterAnimal animal)
+	{
+		if (m_FrontAnimal == CharacterAnimal.NotSelected)
+		{
+			m_FrontAnimal = animal;
+		}
+		else
+		{
+			m_BackAnimal = animal;
+			FadeToScene("MainGame");
+		}
+	}
+	
+	public CharacterAnimal GetFrontAnimal()
+	{
+		return m_FrontAnimal;
+	}
+
+	public CharacterAnimal GetBackAnimal()
+	{
+		return m_BackAnimal;
 	}
 
 	public void ScorePoints(int points)
@@ -130,6 +155,8 @@ public class GameController : SingletonBehaviour<GameController>, EventListener
 
 	void Start()
 	{
+		ResetGame();
+
 		if (EventManager.Instance)
 		{
 			EventManager.Instance.RegisterListener(EventType.e_FadeOutComplete, this);
