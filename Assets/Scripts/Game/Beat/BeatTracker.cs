@@ -33,10 +33,9 @@ public class BeatTracker : MonoBehaviour, EventListener
 			EventManager.Instance.RegisterListener(EventType.e_RaceFinished, this);
 		}
 
-		AudioInterface audioInterface = GameObject.FindObjectOfType<AudioInterface>();
-		if (audioInterface)
+		if (AudioInterface.Instance)
 		{
-			audioInterface.OnBeat.AddListener(SynchBeat);
+			AudioInterface.Instance.OnBeat.AddListener(SynchBeat);
 		}
 	}
 
@@ -46,6 +45,10 @@ public class BeatTracker : MonoBehaviour, EventListener
 		{
 			EventManager.Instance.UnregisterListener(EventType.e_RaceStarted, this);
 			EventManager.Instance.UnregisterListener(EventType.e_RaceFinished, this);
+		}
+		if (AudioInterface.Instance)
+		{
+			AudioInterface.Instance.OnBeat.RemoveListener(SynchBeat);
 		}
 	}
 
