@@ -17,6 +17,7 @@ public class GameController : SingletonBehaviour<GameController>, EventListener
 		public Sprite m_RightNeutral;
 		public Sprite m_RightForward;
 		public Sprite m_RightBack;
+		public Sprite m_Splash;
 	}
 
 	//-------------------------------------------------------------------------
@@ -153,6 +154,19 @@ public class GameController : SingletonBehaviour<GameController>, EventListener
 		
 		// Not found
 		return null;
+	}
+
+	public Sprite GetCharacterSplashSprite(CharacterAnimal animal)
+	{
+		int i = (int)animal;
+		if (i < 0 || i > m_SpriteSet.Length)
+		{
+			return null;
+		}
+		else
+		{
+			return m_SpriteSet[i].m_Splash;
+		}
 	}
 
 	//-------------------------------------------------------------------------
