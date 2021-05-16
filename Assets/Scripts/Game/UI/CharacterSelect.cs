@@ -35,10 +35,14 @@ public class CharacterSelect : MonoBehaviour
 			&& GameController.Instance.CanSelectCharacter())
 		{
 			Debug.Log("Firing select character");
-	
-			
+
 			m_Clicked = true;
 			GameController.Instance.SelectCharacter(m_Animal);
+
+			if (AudioInterface.Instance)
+			{
+				AudioInterface.Instance.Click();
+			}
 
 			m_TextMesh.color = m_SelectColor;
 			m_Image.color = m_SelectColor;

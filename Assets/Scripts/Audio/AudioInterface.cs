@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using System.Runtime.InteropServices;
 using System.Collections;
 
-public class AudioInterface : MonoBehaviour
+public class AudioInterface : SingletonBehaviour<AudioInterface>
 {
     public FMOD.Studio.EventInstance m_BGM;
     public FMOD.Studio.EventInstance m_Water;

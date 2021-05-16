@@ -69,22 +69,16 @@ public class BeatTracker : MonoBehaviour, EventListener
 
 	public void SynchBeat()
 	{
-		//if (!m_BeatSynced)
-		{
-			Debug.Log("Synced to beat");
-			m_BeatSynced = true;
-			m_StartTime = Time.time;
-			m_LastBeat = Time.time;
-			m_NextBeat = Time.time;
-		}
+		m_BeatSynced = true;
+		m_StartTime = Time.time;
+		m_LastBeat = Time.time;
+		m_NextBeat = Time.time;
 	}
 
     // Update is called once per frame
     void Update()
     {
-		Debug.Log("m_BeatSynced = " + m_BeatSynced.ToString());
-		
-		Debug.Log("Time.time = " + Time.time.ToString() + " / NextBeat: " + m_NextBeat.ToString());
+		//Debug.Log("Time.time = " + Time.time.ToString() + " / NextBeat: " + m_NextBeat.ToString());
 		if (m_BeatSynced && Time.time >= m_NextBeat)
 		{
 			Debug.Log("Beat arrived");
