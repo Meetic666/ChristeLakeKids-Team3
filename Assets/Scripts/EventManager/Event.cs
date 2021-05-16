@@ -66,11 +66,11 @@ public class GameEventRaceFinished : GameEvent
 
 public class GameEventPickupCollected : GameEvent
 {
-	public GameEventPickupCollected(int timeBonus)
+	public GameEventPickupCollected(int scoreBonus)
 	{
 		m_EventType = EventType.e_PickupCollected;
 		PickupCollectedEventData eventData = new PickupCollectedEventData();
-		eventData.m_TimeBonus = timeBonus;
+		eventData.m_ScoreBonus = scoreBonus;
 		m_EventData = eventData;
 	}
 

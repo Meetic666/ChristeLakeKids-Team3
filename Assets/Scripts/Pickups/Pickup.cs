@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    public int m_TimeBonus = 5;
+    public int m_ScoreBonus = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class Pickup : MonoBehaviour
     {
         if(collider2D.GetComponent<PlayerController>() != null)
         {
-            GameEvent gameEvent = new GameEventPickupCollected(m_TimeBonus);
+            GameEvent gameEvent = new GameEventPickupCollected(m_ScoreBonus);
             EventManager.Instance.PostEvent(gameEvent);
 
             gameObject.SetActive(false);

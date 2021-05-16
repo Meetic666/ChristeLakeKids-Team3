@@ -165,6 +165,7 @@ public class GameController : SingletonBehaviour<GameController>, EventListener
 		if (EventManager.Instance)
 		{
 			EventManager.Instance.RegisterListener(EventType.e_FadeOutComplete, this);
+			EventManager.Instance.RegisterListener(EventType.e_PickupCollected, this);
 		}
 		else
 		{
@@ -199,6 +200,7 @@ public class GameController : SingletonBehaviour<GameController>, EventListener
 		if (EventManager.Instance)
 		{
 			EventManager.Instance.UnregisterListener(EventType.e_FadeOutComplete, this);
+			EventManager.Instance.UnregisterListener(EventType.e_PickupCollected, this);
 		}
 	}
 
@@ -216,6 +218,13 @@ public class GameController : SingletonBehaviour<GameController>, EventListener
 				{
 					Debug.Log("Fade out complete, but next scene null or empty");
 				}
+			}
+			break;
+
+			case EventType.e_PickupCollected:
+			{
+				PickupCollectedEventData eventData = (PickupCollectedEventData)gameEvent.GetEventData();
+				ScorePoints(eventData.m_ScoreBonus);
 			}
 			break;
 		}

@@ -5,7 +5,7 @@ public class EventData
 
 public class PickupCollectedEventData : EventData
 {
-    public int m_TimeBonus;
+    public int m_ScoreBonus;
 }
 
 public class SpeedChangedEventData : EventData
