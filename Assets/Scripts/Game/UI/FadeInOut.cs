@@ -30,7 +30,7 @@ public class FadeInOut : MonoBehaviour, EventListener
 		}
 
 		RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
-		rectTransform.sizeDelta = new Vector2(Screen.width + 2.0f, Screen.height + 2.0f);
+		rectTransform.sizeDelta = new Vector2(Screen.width * 2.0f, Screen.height * 2.0f);
 		rectTransform.anchoredPosition = new Vector2(0, 0);
 
         m_Image = gameObject.GetComponent<Image>();

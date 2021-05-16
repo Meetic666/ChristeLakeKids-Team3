@@ -46,6 +46,11 @@ public class GameController : SingletonBehaviour<GameController>, EventListener
 		m_BackAnimal = CharacterAnimal.NotSelected;
 	}
 
+	public void GoToCharacterSelect()
+	{
+		FadeToScene("CharacterSelect");
+	}
+
 	public bool CanSelectCharacter()
 	{
 		return m_BackAnimal == CharacterAnimal.NotSelected;
