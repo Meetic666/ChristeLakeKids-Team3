@@ -2320,14 +2320,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6589963420377149396, guid: 68a67bd73a2663145b3ee8b0b7e88b58, type: 3}
-      propertyPath: orthographic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6589963420377149396, guid: 68a67bd73a2663145b3ee8b0b7e88b58, type: 3}
-      propertyPath: orthographic size
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 6589963420377149397, guid: 68a67bd73a2663145b3ee8b0b7e88b58, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2380,30 +2372,6 @@ PrefabInstance:
       propertyPath: m_TargetObject
       value: 
       objectReference: {fileID: 1223979153}
-    - target: {fileID: 6589963420377149400, guid: 68a67bd73a2663145b3ee8b0b7e88b58, type: 3}
-      propertyPath: m_MaxVerticalSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6589963420377149400, guid: 68a67bd73a2663145b3ee8b0b7e88b58, type: 3}
-      propertyPath: m_MaxHorizontalSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6589963420377149400, guid: 68a67bd73a2663145b3ee8b0b7e88b58, type: 3}
-      propertyPath: m_VerticalAcceleration
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6589963420377149400, guid: 68a67bd73a2663145b3ee8b0b7e88b58, type: 3}
-      propertyPath: m_VerticalDeceleration
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6589963420377149400, guid: 68a67bd73a2663145b3ee8b0b7e88b58, type: 3}
-      propertyPath: m_HorizontalAcceleration
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6589963420377149400, guid: 68a67bd73a2663145b3ee8b0b7e88b58, type: 3}
-      propertyPath: m_HorizontalDeceleration
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68a67bd73a2663145b3ee8b0b7e88b58, type: 3}
 --- !u!20 &752249216 stripped
@@ -7451,18 +7419,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 505524663}
     m_Modifications:
-    - target: {fileID: 8522803103523394080, guid: 1f32cab89dbef0e4a83de189c800489a, type: 3}
-      propertyPath: m_MaxTorque
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522803103523394080, guid: 1f32cab89dbef0e4a83de189c800489a, type: 3}
-      propertyPath: m_MaxCurrentForce
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522803103523394080, guid: 1f32cab89dbef0e4a83de189c800489a, type: 3}
-      propertyPath: m_MinCurrentForce
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 8522803103523394082, guid: 1f32cab89dbef0e4a83de189c800489a, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e72e49861b743c5439be5ca6ba120a88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MinCurrentForce: 50
-  m_MaxCurrentForce: 200
+  m_MinCurrentForce: 25
+  m_MaxCurrentForce: 100
   m_MinTorque: 0
-  m_MaxTorque: 50
+  m_MaxTorque: 25
 --- !u!58 &8522803103523394081
 CircleCollider2D:
   m_ObjectHideFlags: 0

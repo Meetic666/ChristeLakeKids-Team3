@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6589963420377149398}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -61,7 +61,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -198,9 +198,9 @@ MonoBehaviour:
   m_VerticalAccelerationThreshold: 2
   m_HorizontalDecelerationThreshold: 1
   m_VerticalDecelerationThreshold: 1
-  m_MaxHorizontalSpeed: 5
-  m_MaxVerticalSpeed: 5
-  m_HorizontalAcceleration: 2
-  m_VerticalAcceleration: 2
+  m_MaxHorizontalSpeed: 2
+  m_MaxVerticalSpeed: 2
+  m_HorizontalAcceleration: 1
+  m_VerticalAcceleration: 1
   m_HorizontalDeceleration: 1
   m_VerticalDeceleration: 1
